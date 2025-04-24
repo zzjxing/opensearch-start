@@ -1,0 +1,52 @@
+# IDE and temp files
+.cproject
+.project
+*~
+*.swp
+.vscode
+.idea
+cmake-build-*
+tags
+test_out
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+*.d
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+# MacOS finder files
+*.DS_Store
+
+# data files
+*.raw
+*.*~
+#*.zip
+*.tar
+*.tar.gz
+*.db
+*.bak
+*.db.bak

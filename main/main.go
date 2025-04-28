@@ -6,6 +6,7 @@ import (
 	"opensearch-start/config"
 	"opensearch-start/resource"
 	"opensearch-start/resource/opensearch"
+	"time"
 )
 
 func init() {
@@ -32,7 +33,7 @@ func main() {
 	} else {
 		fmt.Printf("insert one document\n\n")
 	}
-
+	<-time.After(time.Second * 2) // opensearch每隔1s进行一次flush，插入之后立刻查询有概率查询不到
 	// 获取index下全部document
 	if res, err := client.GetAllDocuments(indexName); err != nil {
 		fmt.Println(err)
@@ -48,7 +49,7 @@ func main() {
 		opensearch.NewDocument("1005", []float64{10.0, 10.0, 10.0}),
 		opensearch.NewDocument("1006", []float64{1000.0, 1000.0, 1000.0}),
 		opensearch.NewDocument("1007", []float64{1.0, 1.0, 1.0}),
-		opensearch.NewDocument("1008", []float64{10011.0, 10011.0, 10011.0, 10011.0}),
+		opensearch.NewDocument("1008", []float64{10011.0, 10011.0, 10011.0, 10011.0}), // 维度错误，应该插入失败
 		opensearch.NewDocument("1009", []float64{1.0, 2.0, 3.0}),
 		opensearch.NewDocument("1010", []float64{10.0, 10.0, 100.0}),
 	}
@@ -60,6 +61,7 @@ func main() {
 		fmt.Printf("BulkInsert all success\n")
 	}
 
+	<-time.After(time.Second * 2)
 	// 获取index下全部document
 	if res, err := client.GetAllDocuments(indexName); err != nil {
 		fmt.Println(err)

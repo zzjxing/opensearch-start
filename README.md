@@ -216,3 +216,4 @@ if err := client.DeleteIndex(ctx, indexName); err != nil {
 欢迎提交 Issue 和 Pull Request 来改进本项目！
 
 ---
+*本文件由 Copilot 生成。*
